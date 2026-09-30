@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Rotina Acessível</title>
+    <style>
+        /* --- VARIÁVEIS DE CORES (ALTO CONTRASTE E CORES CALMAS) --- */
+        :root {
+            --cor-fundo: #f4f6f9;
+            --cor-card: #ffffff;
+            --cor-texto: #1a202c;
+            --cor-primaria: #004085; /* Azul escuro seguro */
+            --cor-secundaria: #e2e8f0;
+            --cor-destaque: #ffb300; /* Amarelo para foco visual */
+            --cor-sucesso: #2f855a;
+        }
+
+        /* --- CONFIGURAÇÕES GERAIS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Atalho de acessibilidade para teclado */
+        .pular-conteudo {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--cor-primaria);
+            color: white;
+            padding: 10px;
+            z-index: 100;
+            text-decoration: none;
+        }
+        .pular-conteudo:focus {
+            top: 0;
+        }
+
+        /* --- ESTRUTURA PRINCIPAL --- */
+        header, main, footer {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            background-color: var(--cor-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e0;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--cor-primaria);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+
+        /* --- MENU DE NAVEGAÇÃO --- */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: var(--cor-primaria);
+            color: white;
+            outline: 3px solid var(--cor-destaque);
+        }
+
+        /* --- SEÇÕES E TÍTULOS --- */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--cor-primaria);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--cor-secundaria);
+            padding-bottom: 8px;
+        }
+
+        /* --- CRONOGRAMA DA ROTINA (6 ATIVIDADES) --- */
+        .lista-rotina {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .item-rotina {
+            background-color: #f8fafc;
+            border-left: 6px solid var(--cor-primaria);
+            padding: 20px;
+            border-radius: 0 6px 6px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+            border: 1px solid #e2e8f0;
+            border-left: 6px solid var(--cor-primaria);
+        }
+
+        @media (min-width: 600px) {
+            .item-rotina {
+                grid-template-columns: 120px 1fr 1fr;
+                align-items: center;
+            }
+        }
+
+        .horario {
+            font-weight: bold;
+            color: var(--cor-primaria);
+            font-size: 1.1rem;
+        }
+
+        .atividade {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .local {
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        /* --- DICAS DE COMUNICAÇÃO --- */
+        .lista-dicas {
+            list-style: none;
+        }
+
+        .lista-dicas li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .lista-dicas li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--cor-sucesso);
+            font-weight: bold;
+        }
+
+        /* --- BOTÕES --- */
+        .container-botoes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .botao {
+            background-color: var(--cor-primaria);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .botao:hover, .botao:focus {
+            background-color: #002752;
+            outline: 3px solid var(--cor-destaque);
+        }
+
+        .botao-secundario {
+            background-color: #4a5568;
+        }
+
+        .botao-secundario:hover, .botao-secundario:focus {
+            background-color: #2d3748;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-principal" class="pular-conteudo">Pular para o conteúdo principal</a>
+
+    <header>
+        <h1>Minha Rotina Acessível</h1>
+        <p class="subtitulo">Abaixo você encontra as atividades diárias organizadas de forma clara por horário, ordem e local.</p>
+        
+        <nav aria-label="Menu de Navegação do Site">
+            <ul>
+                <li><a href="#rotina">Ver Rotina</a></li>
+                <li><a href="#dicas">Dicas de Comunicação</a></li>
+                <li><a href="#acoes">Ações do Dia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+        
+        <!-- SEÇÃO: ROTINA DIÁRIA (O que fazer → Quando fazer → Onde fazer) -->
+        <section id="rotina">
+            <h2>Minha Rotina Diária</h2>
+            <div class="lista-rotina">
+                
+                <article class="item-rotina">
+                    <span class="horario">07h30</span>
+                    <span class="atividade">Café da Manhã</span>
+                    <span class="local">Onde: Na Cozinha</span>
+                </article>
+
+                <article class="item-rotina">
+                    <span class="horario">08h30</span>
+                    <span class="atividade">Estudo Escolar / Trabalho</span>
+                    <span class="local">Onde: No Escritório</span>
+                </article>
+
+                <article class="item-rotina">
+                    <span class="horario">12h00</span>
+                    <span class="atividade">Almoço e Descanso</span>
+                    <span class="local">Onde: Na Sala de Jantar</span>
+                </article>
+
+                <article class="item-rotina">
+                    <span class="horario">14h00</span>
+                    <span class="atividade">Atividade Física / Caminhada</span>
+                    <span class="local">Onde: No Parque</span>
+                </article>
+
+                <article class="item-rotina">
+                    <span class="horario">16h30</span>
+                    <span class="atividade">Leitura ou Passatempo</span>
+                    <span class="local">Onde: No Quarto</span>
+                </article>
+
+                <article class="item-rotina">
+                    <span class="horario">19h30</span>
+                    <span class="atividade">Jantar em Família</span>
+                    <span class="local">Onde: Na Cozinha</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: DICAS DE COMUNICAÇÃO -->
+        <section id="dicas">
+            <h2>Dicas para uma Comunicação Clara</h2>
+            <p style="margin-bottom: 15px;">Estratégias simples que tornam a leitura e compreensão mais fáceis para todos:</p>
+            <ul class="lista-dicas">
+                <li><strong>Seja direto:</strong> Evite metáforas ou sentidos figurados confusos.</li>
+                <li><strong>Evite blocos longos de texto:</strong> Divida as frases e use listas pontuadas.</li>
+                <li><strong>Mantenha a previsibilidade:</strong> Siga sempre a mesma estrutura visual para as informações.</li>
+                <li><strong>Limite estímulos visuais:</strong> Remova animações que piscam, cores excessivas ou anúncios.</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO: BOTÕES DE AÇÃO -->
+        <section id="acoes">
+            <h2>Ações Rápidas</h2>
+            <p>Use os botões abaixo para interagir ou ajustar o seu dia:</p>
+            <div class="container-botoes">
+                <button class="botao" onclick="window.print()">Imprimir Minha Rotina</button>
+                <a href="#rotina" class="botao botao-secundario">Voltar ao Topo</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Minha Rotina Acessível. Desenvolvido com foco em design universal e inclusivo.</p>
+    </footer>
+
+</body>
+</html>
